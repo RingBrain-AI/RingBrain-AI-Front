@@ -1,16 +1,19 @@
-
-import './App.css'
+import Hero from './components/Hero';
+import Features from './components/Features';
+import RegistrationForm from './components/RegistrationForm';
 
 function App() {
+  const scrollToForm = () => {
+    document.getElementById('registro')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <h1 className="text-4xl font-bold text-blue-600">Tailwind is working</h1>
-        <div className="w-48 h-12 bg-red-500 mt-6"></div>
-      </div>
-    </>
-  )
+    <div className="min-h-screen">
+      <Hero onScrollToForm={scrollToForm} />
+      <Features />
+      <RegistrationForm />
+    </div>
+  );
 }
 
-export default App
+export default App;
