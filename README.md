@@ -1,258 +1,281 @@
-# RingBrain AI - Landing Page
+# RingBrain AI - Frontend
 
-Landing page moderna para captación de leads con formulario de registro que se conecta a un backend Java.
+A modern landing page and admin panel for RIWI's educational platform, built with React, Vite, and Tailwind CSS.
 
-## 🚀 Características
+## 🚀 Features
 
-- ✨ Diseño moderno y atractivo inspirado en Riwi.io
-- 📱 Totalmente responsive
-- 🎨 Animaciones suaves y efectos visuales premium
-- 📋 Formulario de registro con validación completa
-- 🔌 Integración con API REST (Java Spring Boot)
-- ✅ Manejo de errores robusto
-- 🎯 Validación de datos en tiempo real
+### Landing Page
+- **Modern Design**: Purple/blue gradient theme with smooth animations
+- **Hero Section**: Eye-catching introduction with statistics and dual CTAs
+- **Statistics Cards**: Display key metrics (5,000+ graduates, 300+ partner companies)
+- **Programs Showcase**: Three main programs with detailed descriptions
+- **Dynamic Registration Form**: Two-column layout with ISA benefits
+- **Partners Section**: Display of partner companies
+- **Success Stories**: Student testimonials with ratings
+- **Final CTA**: Conversion-focused call-to-action
+- **Complete Footer**: Links, contact info, and social media
 
-## 🛠️ Tecnologías
+### Admin Panel
+- **Secure Authentication**: Protected routes with hardcoded credentials
+- **Dashboard**: Statistics overview and quick actions
+- **Form Data Manager**: Complete CRUD interface for managing all form fields
+  - Document types
+  - Genders
+  - Study schedules
+  - Occupations
+  - Education levels
+  - Departments
+  - Socioeconomic strata
+  - Programming levels
+  - Agreement types
+- **Analytics**: Placeholder for future metrics and charts
+- **Responsive Design**: Works seamlessly on desktop and mobile
 
-- **React 19** - Framework frontend
-- **Vite** - Build tool y dev server
-- **Tailwind CSS** - Framework de estilos
-- **React Hook Form** - Manejo de formularios
-- **Yup** - Validación de esquemas
-- **Axios** - Cliente HTTP para API REST
-- **Lucide React** - Iconos modernos
+## 🛠️ Tech Stack
 
-## 📦 Instalación
+- **React 18** - UI library
+- **Vite** - Build tool and dev server
+- **React Router DOM** - Client-side routing
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Hook Form** - Form validation and management
+- **Yup** - Schema validation
+- **Lucide React** - Icon library
+- **Axios** - HTTP client
 
-1. **Clona el repositorio:**
-```bash
-git clone <repository-url>
-cd RingBrain-AI-Front
+## 📋 Prerequisites
+
+- Node.js 16+ and npm
+- Git
+
+## 🔧 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/RingBrain-AI/RingBrain-AI-Front.git
+   cd RingBrain-AI-Front
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+   ```
+   http://localhost:5173
+   ```
+
+## ⚙️ Configuration
+
+### Backend API Endpoints
+
+Configure your backend endpoints in `src/config/api.config.js`:
+
+```javascript
+export const API_CONFIG = {
+  // Endpoint to fetch form data (select options)
+  FORM_DATA_ENDPOINT: 'https://your-api.com/form-data',
+  
+  // Endpoint to submit registration form
+  SUBMIT_FORM_ENDPOINT: 'https://your-api.com/registration',
+};
 ```
 
-2. **Instala las dependencias:**
-```bash
-npm install
-```
+### Expected Backend Response Format
 
-3. **Configura las variables de entorno:**
-```bash
-cp .env.example .env
-```
-
-4. **Edita el archivo `.env` con la URL de tu backend Java:**
-```env
-VITE_API_URL=http://localhost:8080/api
-```
-
-## 🚀 Uso
-
-### Modo Desarrollo
-```bash
-npm run dev
-```
-La aplicación estará disponible en `http://localhost:5173`
-
-### Build para Producción
-```bash
-npm run build
-```
-
-### Preview del Build
-```bash
-npm run preview
-```
-
-### Linting
-```bash
-npm run lint
-```
-
-## 🔌 Integración con Backend Java
-
-### Endpoint Esperado
-
-El frontend envía los datos del formulario a:
-```
-POST /api/registrations
-```
-
-### Estructura de Datos Enviados
-
+**Form Data Endpoint (GET)**:
 ```json
 {
-  "correo": "string",
-  "nombreCompleto": "string",
-  "tipoDocumento": "string",
-  "numeroDocumento": "string",
-  "telefonoContacto": "string",
-  "fechaNacimiento": "date",
-  "genero": "string",
-  "horarioEstudio": "string",
-  "ocupacionActual": "string",
-  "nivelEscolaridad": "string",
-  "departamentoResidencia": "string",
-  "municipioResidencia": "string",
-  "estratoSocioeconomico": "string",
-  "nivelProgramacion": "string",
-  "tipoConvenio": "string",
-  "politicaPrivacidad": "boolean"
+  "documentTypes": [
+    { "value": "cc", "label": "Cédula de Ciudadanía" }
+  ],
+  "genders": [
+    { "value": "masculino", "label": "Masculino" }
+  ],
+  // ... other fields
 }
 ```
 
-### Respuesta Esperada del Backend
+**Form Submission Endpoint (POST)**:
+Accepts the complete form data object and should return a success response.
 
-**Éxito (200 OK):**
-```json
-{
-  "success": true,
-  "message": "Registro exitoso",
-  "data": {
-    "id": "123",
-    ...
-  }
-}
-```
+## 🔐 Admin Panel Access
 
-**Error (4xx/5xx):**
-```json
-{
-  "success": false,
-  "message": "Descripción del error"
-}
-```
+### Default Credentials
+- **URL**: `/admin`
+- **Email**: `admin@riwi.io`
+- **Password**: `riwi2025`
 
-### Configuración CORS en el Backend
+> ⚠️ **Important**: Change these credentials in production! Update them in `src/context/AuthContext.jsx`
 
-Asegúrate de configurar CORS en tu backend Java para permitir peticiones desde el frontend:
+### Admin Routes
+- `/admin/login` - Login page
+- `/admin/dashboard` - Main dashboard
+- `/admin/form-data` - Form data management
+- `/admin/analytics` - Analytics (placeholder)
 
-```java
-@Configuration
-public class CorsConfig {
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")
-                    .allowedOrigins("http://localhost:5173", "http://localhost:3000")
-                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                    .allowedHeaders("*")
-                    .allowCredentials(true);
-            }
-        };
-    }
-}
-```
-
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 
 ```
 RingBrain-AI-Front/
-├── public/              # Archivos estáticos
 ├── src/
-│   ├── components/      # Componentes React
-│   │   ├── Hero.jsx              # Sección hero principal
-│   │   ├── Features.jsx          # Características del programa
-│   │   └── RegistrationForm.jsx  # Formulario de registro
-│   ├── services/        # Servicios y APIs
-│   │   └── api.js                # Cliente Axios configurado
-│   ├── App.jsx          # Componente principal
-│   ├── main.jsx         # Punto de entrada
-│   └── index.css        # Estilos globales
-├── .env.example         # Ejemplo de variables de entorno
-├── .gitignore          # Archivos ignorados por Git
-├── package.json        # Dependencias y scripts
-├── tailwind.config.js  # Configuración de Tailwind
-├── vite.config.js      # Configuración de Vite
-└── README.md           # Este archivo
+│   ├── components/          # Reusable components
+│   │   ├── Hero.jsx
+│   │   ├── Stats.jsx
+│   │   ├── Programs.jsx
+│   │   ├── Companies.jsx
+│   │   ├── Testimonials.jsx
+│   │   ├── FinalCTA.jsx
+│   │   ├── Footer.jsx
+│   │   ├── RegistrationForm.jsx
+│   │   └── ProtectedRoute.jsx
+│   ├── pages/               # Page components
+│   │   └── admin/
+│   │       ├── Login.jsx
+│   │       ├── AdminLayout.jsx
+│   │       ├── Dashboard.jsx
+│   │       ├── FormDataManager.jsx
+│   │       └── Analytics.jsx
+│   ├── context/             # React contexts
+│   │   └── AuthContext.jsx
+│   ├── services/            # API services
+│   │   └── api.js
+│   ├── config/              # Configuration files
+│   │   └── api.config.js
+│   ├── utils/               # Utility functions
+│   │   └── constants.js
+│   ├── App.jsx              # Main app component
+│   ├── main.jsx             # App entry point
+│   └── index.css            # Global styles
+├── public/                  # Static assets
+├── index.html               # HTML template
+├── package.json             # Dependencies
+├── vite.config.js           # Vite configuration
+├── tailwind.config.js       # Tailwind configuration
+└── README.md                # This file
 ```
 
-## 🎨 Personalización
+## 🎨 Design System
 
-### Colores del Tema
+### Colors
+- **Primary Purple**: `#8b5cf6` (purple-600)
+- **Primary Blue**: `#3b82f6` (blue-600)
+- **Accent Green**: `#10b981` (green-600)
+- **Accent Orange**: `#f97316` (orange-600)
+- **Background**: `#f9fafb` (gray-50)
 
-Edita `src/index.css` para cambiar los colores principales:
+### Gradients
+- **Main Gradient**: `from-purple-600 via-purple-500 to-blue-600`
+- Used in: Hero, Login, CTAs, Admin sidebar
 
-```css
-:root {
-  --primary: #6366f1;
-  --secondary: #a855f7;
-  --dark: #0f172a;
-}
+### Custom CSS Classes
+- `.gradient-bg` - Purple to blue gradient background
+- `.gradient-text` - Purple to blue gradient text
+- `.btn-primary` - White button with purple text
+- `.btn-secondary` - Outlined white button
+- `.icon-circle` - Circular icon container
+- `.card` - White card with shadow
+
+## 📜 Available Scripts
+
+```bash
+# Development
+npm run dev          # Start dev server (port 5173)
+
+# Build
+npm run build        # Build for production
+
+# Preview
+npm run preview      # Preview production build
+
+# Lint
+npm run lint         # Run ESLint
 ```
 
-### Opciones del Formulario
+## 🌐 Deployment
 
-Edita `src/components/RegistrationForm.jsx` para modificar las opciones de los selectores (ciudades, departamentos, etc.).
-
-## 📝 Campos del Formulario
-
-| Campo | Tipo | Validación |
-|-------|------|------------|
-| Correo | Email | Formato válido, requerido |
-| Nombre Completo | Text | Mínimo 3 caracteres, requerido |
-| Tipo de Documento | Select | Requerido |
-| Número de Documento | Text | Requerido |
-| Teléfono de Contacto | Tel | Requerido |
-| Fecha de Nacimiento | Date | Requerida |
-| Género | Select | Requerido |
-| Horario de Estudio | Select | Requerido |
-| Ocupación Actual | Select | Requerida |
-| Nivel de Escolaridad | Select | Requerido |
-| Departamento | Select | Requerido |
-| Municipio | Select | Requerido |
-| Estrato Socioeconómico | Select | Requerido |
-| Nivel de Programación | Select | Requerido |
-| Tipo de Convenio | Select | Requerido |
-| Política de Privacidad | Checkbox | Debe ser aceptada |
-
-## 🔒 Seguridad
-
-- ✅ Validación de datos en frontend con Yup
-- ✅ Variables de entorno para configuración sensible
-- ✅ Timeout de 10 segundos en peticiones HTTP
-- ✅ Manejo de errores robusto
-- ✅ Archivo `.env` excluido de Git
-
-## 🐛 Manejo de Errores
-
-El frontend maneja tres tipos de errores:
-
-1. **Errores del servidor (4xx/5xx)**: Muestra el mensaje del backend
-2. **Errores de red**: Muestra mensaje de conexión
-3. **Errores inesperados**: Muestra mensaje genérico
-
-## 🚀 Despliegue
-
-### Variables de Entorno en Producción
-
-Asegúrate de configurar `VITE_API_URL` con la URL de producción de tu backend:
-
-```env
-VITE_API_URL=https://api.tudominio.com/api
-```
-
-### Build y Deploy
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-Los archivos estáticos se generarán en la carpeta `dist/` listos para ser desplegados en cualquier servidor web o CDN.
+This creates an optimized build in the `dist/` folder.
 
-## 📄 Licencia
+### Deploy to Vercel/Netlify
 
-MIT License
+1. Connect your GitHub repository
+2. Set build command to `npm run build`
+3. Set publish directory to `dist`
+4. Deploy!
 
-## 🤝 Contribución
+### Environment Variables (Optional)
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+Create a `.env` file for custom API URL:
 
-## 📞 Soporte
+```env
+VITE_API_URL=https://your-backend-api.com/api
+```
 
-Para preguntas o problemas, por favor abre un issue en el repositorio.
+## 🔄 Dynamic Form Data
+
+The registration form dynamically loads options from the backend. If the backend is unavailable, it falls back to local constants in `src/utils/constants.js`.
+
+### Managing Form Fields in Admin Panel
+
+1. Navigate to `/admin/form-data`
+2. Select the field to edit
+3. Add, edit, or delete options
+4. Click "Guardar Todos los Cambios" to save
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 Code Style
+
+- Use English for all variable names, function names, and comments
+- Use Spanish only for user-facing text (landing page and admin UI)
+- Follow React best practices and hooks conventions
+- Use Tailwind CSS utility classes
+- Keep components small and focused
+
+## 🐛 Troubleshooting
+
+### Port already in use
+```bash
+# Change port in vite.config.js or kill the process using port 5173
+```
+
+### Build errors
+```bash
+# Clear cache and reinstall
+rm -rf node_modules package-lock.json
+npm install
+```
+
+### Form not submitting
+- Check that `API_CONFIG.SUBMIT_FORM_ENDPOINT` is correctly configured
+- Verify backend API is running and accessible
+- Check browser console for errors
+
+## 📄 License
+
+This project is proprietary and confidential.
+
+## 👥 Authors
+
+**RingBrain AI Team**
+
+---
+
+For more information, visit [RIWI](https://riwi.io)
