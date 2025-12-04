@@ -3,19 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --primary: #6366f1;
-  --secondary: #a855f7;
-  --dark: #0f172a;
+  --primary-purple: #8b5cf6;
+  --primary-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-orange: #f97316;
+  --gradient-start: #7c3aed;
+  --gradient-end: #2563eb;
 }
 
 body {
-  @apply bg-slate-950 text-white font-sans antialiased;
+  @apply bg-gray-50 text-gray-900 font-sans antialiased;
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600;
+}
+
+.gradient-bg {
+  @apply bg-gradient-to-br from-purple-600 via-purple-500 to-blue-600;
 }
 
 .btn-primary {
-  @apply px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all duration-300 font-semibold shadow-lg shadow-indigo-500/30;
+  @apply px-6 py-3 rounded-full bg-white text-purple-600 hover:bg-gray-50 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 rounded-full border-2 border-white text-white hover:bg-white hover:text-purple-600 transition-all duration-300 font-semibold;
+}
+
+.icon-circle {
+  @apply w-16 h-16 rounded-full flex items-center justify-center shadow-lg;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6;
 }

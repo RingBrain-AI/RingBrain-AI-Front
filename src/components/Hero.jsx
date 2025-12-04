@@ -1,85 +1,70 @@
-import { ArrowRight, Code, Sparkles } from 'lucide-react';
+import { ArrowRight, Rocket } from 'lucide-react';
 
 const Hero = ({ onScrollToForm }) => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM2MzY2ZjEiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzBoLTJ2LTJoMnYyem0wIDRoLTJ2LTJoMnYyem0wIDRoLTJ2LTJoMnYyem0wIDRoLTJ2LTJoMnYyem0wIDRoLTJ2LTJoMnYyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-20"></div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="space-y-8 animate-fade-in">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-sm">
-            <Sparkles className="w-4 h-4 text-indigo-400" />
-            <span className="text-sm text-indigo-300">Transforma tu futuro en tech</span>
-          </div>
-
-          {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            Conviértete en{' '}
-            <span className="gradient-text">
-              Desarrollador de Software
-            </span>
-          </h1>
-
-          {/* Subheading */}
-          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto">
-            Aprende desarrollo web desde cero en 8-10 meses con formación práctica, 
-            proyectos reales y conexión directa con la industria tech
-          </p>
-
-          {/* Features */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm md:text-base">
-            <div className="flex items-center gap-2 text-slate-300">
-              <div className="w-2 h-2 rounded-full bg-indigo-500"></div>
-              <span>100% Práctico</span>
+    <section className="relative overflow-hidden">
+      {/* Purple Gradient Background */}
+      <div className="gradient-bg relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+          <div className="text-center space-y-8">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
+              <Rocket className="w-4 h-4 text-white" />
+              <span className="text-sm text-white">Educación que transforma vidas</span>
             </div>
-            <div className="flex items-center gap-2 text-slate-300">
-              <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-              <span>Sin experiencia previa</span>
-            </div>
-            <div className="flex items-center gap-2 text-slate-300">
-              <div className="w-2 h-2 rounded-full bg-pink-500"></div>
-              <span>Proyectos reales</span>
-            </div>
-          </div>
 
-          {/* CTA Button */}
-          <div className="pt-4">
-            <button 
-              onClick={onScrollToForm}
-              className="btn-primary inline-flex items-center gap-2 text-lg group"
-            >
-              Inscríbete ahora
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
+            {/* Main Heading */}
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white max-w-4xl mx-auto">
+              Aprende Programación e Inglés para Transformar tu Futuro
+            </h1>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12">
-            <div className="space-y-1">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">8-10</div>
-              <div className="text-sm text-slate-400">Meses de formación</div>
+            {/* Subheading */}
+            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+              Conviértete en desarrollador de software y domina el inglés técnico.
+              <br />
+              Sin costos iniciales, pagas cuando consigues empleo.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+              <button 
+                onClick={onScrollToForm}
+                className="btn-primary inline-flex items-center gap-2 text-lg group"
+              >
+                Comienza gratis ahora
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button 
+                onClick={onScrollToForm}
+                className="btn-secondary inline-flex items-center gap-2 text-lg"
+              >
+                Ver programas
+              </button>
             </div>
-            <div className="space-y-1">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">100%</div>
-              <div className="text-sm text-slate-400">Práctico</div>
-            </div>
-            <div className="space-y-1">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">0</div>
-              <div className="text-sm text-slate-400">Experiencia requerida</div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto pt-16">
+              <div className="space-y-2">
+                <div className="text-5xl md:text-6xl font-bold text-white">95%</div>
+                <div className="text-sm text-white/80">Empleabilidad</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-5xl md:text-6xl font-bold text-white">$0</div>
+                <div className="text-sm text-white/80">Hasta conseguir empleo</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-5xl md:text-6xl font-bold text-white">6 meses</div>
+                <div className="text-sm text-white/80">De formación</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 rounded-full border-2 border-indigo-400/30 flex items-start justify-center p-2">
-          <div className="w-1 h-3 rounded-full bg-indigo-400 animate-pulse"></div>
+        {/* Wave SVG at bottom */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#f9fafb"/>
+          </svg>
         </div>
       </div>
     </section>
