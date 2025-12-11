@@ -5,12 +5,12 @@
 
 export const API_CONFIG = {
     // Endpoint para obtener los datos de los selects del formulario
-    // Ejemplo: 'https://api.riwi.io/form-data'
-    FORM_DATA_ENDPOINT: 'TU_ENDPOINT_AQUI',
+    // Ejemplo: '/form-data'
+    FORM_DATA_ENDPOINT: '/form-data',
 
     // Endpoint para enviar el formulario
-    // Ejemplo: 'https://api.riwi.io/registration'
-    SUBMIT_FORM_ENDPOINT: 'TU_ENDPOINT_AQUI',
+    // Ejemplo: '/registration'
+    SUBMIT_FORM_ENDPOINT: '/registration',
 };
 
 // ============================================

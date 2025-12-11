@@ -20,7 +20,7 @@ const apiClient = axios.create({
  */
 export const fetchFormData = async () => {
   try {
-    const response = await axios.get(API_CONFIG.FORM_DATA_ENDPOINT);
+    const response = await apiClient.get(API_CONFIG.FORM_DATA_ENDPOINT);
     return response.data;
   } catch (error) {
     console.error('Error fetching form data:', error);
@@ -43,7 +43,7 @@ export const fetchFormData = async () => {
  */
 export const submitRegistration = async (data) => {
   try {
-    const response = await axios.post(API_CONFIG.SUBMIT_FORM_ENDPOINT, data);
+    const response = await apiClient.post(API_CONFIG.SUBMIT_FORM_ENDPOINT, data);
     return response.data;
   } catch (error) {
     // Handle different error scenarios
