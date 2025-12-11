@@ -222,6 +222,21 @@ Create a `.env` file for custom API URL:
 VITE_API_URL=https://your-backend-api.com/api
 ```
 
+### Docker Deployment
+
+1. **Build the image**
+   ```bash
+   docker build -t ringbrain-front .
+   ```
+
+2. **Run the container**
+   ```bash
+   docker run -d -p 80:80 ringbrain-front
+   ```
+
+3. **Access the application**
+   Open `http://localhost` in your browser.
+
 ## 🔄 Dynamic Form Data
 
 The registration form dynamically loads options from the backend. If the backend is unavailable, it falls back to local constants in `src/utils/constants.js`.
