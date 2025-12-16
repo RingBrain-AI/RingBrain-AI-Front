@@ -18,8 +18,9 @@ const ContactSection = ({ register, errors }) => {
         label="Teléfono de contacto"
         type="tel"
         placeholder="Escribe tu teléfono celular..."
-        {...register('phoneNumber')}  
-        onChange={handlePhoneChange} 
+        {...register('phoneNumber', { 
+    onChange: handlePhoneChange 
+  })}
         error={errors.phoneNumber}
         required
       />
