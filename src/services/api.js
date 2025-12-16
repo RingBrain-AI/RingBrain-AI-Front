@@ -106,7 +106,9 @@ export const submitRegistration = async (formData, catalogData) => {
     // Transform form data to backend expected format
     const payload = {
       fullName: formData.fullName,
-      phoneNumber: formData.phoneNumber,
+      phoneNumber: formData.phoneNumber.startsWith('+57')
+        ? formData.phoneNumber
+        : `+57${formData.phoneNumber.replace(/^\+/, '')}`,
       email: formData.email,
       birthdate: formatDate(formData.birthdate),
       identityNumber: formData.documentNumber,
